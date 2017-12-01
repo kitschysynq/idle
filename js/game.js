@@ -43,7 +43,7 @@ Game.init = function () {
 
 Game.update = function (delta) {
 	this.current = (Date.now() - this.start) * this.rate + this.base;
-	if (this.cost < this.current) {
+	if (this.cost <= this.current) {
 		this.button.disabled = false;
 	} else {
 		this.button.disabled = true;
@@ -57,7 +57,7 @@ Game.render = function () {
 }; 
 
 Game.click = function() {
-	if (this.current > this.cost) {
+	if (this.current >= this.cost) {
 		this.base = this.current - this.cost;
 		this.start = Date.now();
 		this.current = 0;
